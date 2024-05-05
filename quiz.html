@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - BikeCity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(-40deg, #e66e6e, #ee9d67, #f8de74) no-repeat;
+            background-size: 400% 400%; /* Ajustado o tamanho do gradiente */
+            animation: animation 3s ease alternate infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        @keyframes animation {
+            from {
+                background-position: 0 50%;
+            }
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        header {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #ffee00;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            max-width: 100px;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #f1e6a8;
+        }
+
+        #quiz {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffee00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 100px; /* Ajuste para evitar que o cabeçalho cubra o conteúdo */
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question h2 {
+            margin-top: 0;
+        }
+
+        .question p {
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .options label {
+            margin-bottom: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-next {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-next:hover {
+            background-color: #ff4500;
+        }
+
+        .btn-start {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-start:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/bicicleta.png" alt="BikeCity Logo">
+        <nav>
+            <a href="contato.html">Contato</a>
+            <a href="inicio.html">Início</a>
+            <a href="index.html">Login</a>
+            <!-- Adicione mais links conforme necessário -->
+        </nav>
+    </header>
+
+    <div id="quiz">
+        <button class="btn-start" onclick="startQuiz()">CLIQUE PARA INÍCIAR O QUIZ</button>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 1</h2>
+            <p>Qual o nome do componente responsável por mudar as marchas da bicicleta?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a">Pedal</label>
+                <label><input type="radio" name="q1" value="b">Câmbio</label>
+                <label><input type="radio" name="q1" value="c">Guidão</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 2</h2>
+            <p>Qual o nome do componente onde se encontra o selim da bicicleta?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a">Garfo</label>
+                <label><input type="radio" name="q2" value="b">Cubo</label>
+                <label><input type="radio" name="q2" value="c">Quadro</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 3</h2>
+            <p>Qual o nome do tipo de bicicleta projetado para longas viagens?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a">Bicicleta Urbana</label>
+                <label><input type="radio" name="q3" value="b">Bicicleta Dobrável</label>
+                <label><input type="radio" name="q3" value="c">Bicicleta de Turismo</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 4</h2>
+            <p>Qual o nome do esporte que consiste em realizar manobras em uma bicicleta?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a">Mountain Bike</label>
+                <label><input type="radio" name="q4" value="b">BMX</label>
+                <label><input type="radio" name="q4" value="c">Ciclismo de Estrada</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 5</h2>
+            <p>Qual o nome do componente que conecta o pedal ao cubo da roda traseira?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a">Corrente</label>
+                <label><input type="radio" name="q5" value="b">Câmbio</label>
+                <label><input type="radio" name="q5" value="c">Freio</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 6</h2>
+            <p>Qual o nome do estilo de bicicleta projetado para uso em terrenos acidentados?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a">Speed</label>
+                <label><input type="radio" name="q6" value="b">Mountain Bike</label>
+                <label><input type="radio" name="q6" value="c">Cruiser</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 7</h2>
+            <p>Qual o nome do componente que permite girar a roda dianteira?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a">Garfo</label>
+                <label><input type="radio" name="q7" value="b">Suspensão</label>
+                <label><input type="radio" name="q7" value="c">Movimento Central</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 8</h2>
+            <p>Qual o nome da competição de ciclismo que ocorre em trilhas?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a">Tour de France</label>
+                <label><input type="radio" name="q8" value="b">XCO</label>
+                <label><input type="radio" name="q8" value="c">Maratona</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 9</h2>
+            <p>Qual o nome do componente que controla a direção da bicicleta?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a">Freio</label>
+                <label><input type="radio" name="q9" value="b">Guidão</label>
+                <label><input type="radio" name="q9" value="c">Câmbio</label>
+            </div>
+        </div>
+        <div class="question" style="display:none;">
+            <h2>Pergunta 10</h2>
+            <p>Qual o nome da competição de ciclismo que ocorre em circuitos urbanos fechados?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a">Criterium</label>
+                <label><input type="radio" name="q10" value="b">Downhill</label>
+                <label><input type="radio" name="q10" value="c">Cross-country</label>
+            </div>
+        </div>
+
+        <div class="result" style="display:none;"></div>
+        <button class="btn-next" style="display:none;">Próxima Pergunta</button>
+    </div>
+   
+    <script src="quiz.js"></script>
+    
+</body>
+</html>
